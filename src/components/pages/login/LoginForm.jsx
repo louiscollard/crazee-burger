@@ -3,6 +3,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import styled from 'styled-components';
+import { theme } from "../../../theme";
 import PrimaryButton from "../../shared/PrimaryButton";
 import TextInput from "../../shared/TextInput";
 export default function LoginForm() {
@@ -40,24 +41,24 @@ const LoginFormStyled = styled.form`
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
-  padding: 2.5rem 2rem;
-  border-radius: 5px;
+  padding: 2.5rem ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid #f56a2c;
-    margin-bottom: 40px;
+    border: 1.5px solid ${theme.colors.primary};
+    margin-bottom: ${theme.gridUnit * 5}px;
   }
 
   h1 {
-    color: white;
-    font-size: 48px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P5};
     margin: 30px;
   }
   
   h2 {
-    color: white;
-    font-size: 36px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P4};
     margin: 20px 10px 10px;
   }
 `
