@@ -3,19 +3,21 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import styled from 'styled-components';
+import PrimaryButton from "../../shared/PrimaryButton";
+import TextInput from "../../shared/TextInput";
 export default function LoginForm() {
-  const [name, setName] = useState("")
+  const [TextInputValue, setTextInputValue] = useState("")
   const navigate = useNavigate()
 
   const handleChange = (e) => {
     e.preventDefault()
-    setName(e.target.value)
+    setTextInputValue(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate("/order", { state: { name } })
-    setName("")
+    navigate("/order", { state: { TextInputValue } })
+    setTextInputValue("")
   }
 
   return (
@@ -26,14 +28,8 @@ export default function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div>
-        <div className="input-with-icon">
-          <BsPersonCircle className="icon" />
-          <input type="text" value={name} onChange={handleChange} placeholder="Entrez votre prénom..." required />
-        </div>
-        <button className="button-with-icon">
-          <span>Accéder à votre espace</span>
-          <IoChevronForward className="icon" />
-        </button>
+        <TextInput value={TextInputValue} onChange={handleChange} Icon={<BsPersonCircle className="icon" />} placeholder={"Entrez votre prénom..."} required />
+        <PrimaryButton label={"Accéder à votre espace"} Icon={<IoChevronForward />} />
       </div>
     </LoginFormStyled>
   )
@@ -63,59 +59,5 @@ const LoginFormStyled = styled.form`
     color: white;
     font-size: 36px;
     margin: 20px 10px 10px;
-  }
-
-  .input-with-icon {
-    background: white;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
-
-    .icon {
-      margin-right: 8px;
-      color: #93a2b1;
-      font-size: 15px;
-    }
-
-    input {
-      border: none;
-      font-size: 15px;
-      color: #17161a;
-    }
-
-    &::placeholder {
-      background: white;
-      color: lightgrey;
-    }
-
-  }
-
-  .button-with-icon {
-    width: 100%;
-    border: 1px solid red;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    white-space: nowrap;
-    text-decoration: none;
-    line-height: 1;
-
-    padding: 18px 24px;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 800;
-    color: white;
-    background-color: #ff9f1b;
-    border: 1px solid #ff9f1b;
-
-    &:hover:not(:disabled) {
-      background-color: white;
-      color: #ff9f1b;
-      border: 1px solid #ff9f1b;
-      transition: all 200ms ease-out;
-    }
   }
 `
