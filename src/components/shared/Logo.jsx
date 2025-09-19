@@ -31,6 +31,5 @@ const LogoStyled = styled.div`
         object-position: center;
         height: 60px;
         width: 80px;
-        /* margin: ${theme.spacing.sm} */
     }
 `;
