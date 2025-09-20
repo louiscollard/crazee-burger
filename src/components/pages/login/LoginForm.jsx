@@ -54,11 +54,13 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P5};
     margin: 30px;
+    font-family: "Amatic SC", cursive;
   }
   
   h2 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P4};
     margin: 20px 10px 10px;
+    font-family: "Amatic SC", cursive;
   }
 `

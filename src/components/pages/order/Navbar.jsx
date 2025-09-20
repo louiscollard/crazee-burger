@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import NavbarLeftSide from "./NavbarLeftSide";
 import NavbarRightSide from "./NavbarRightSide";
 
@@ -11,10 +12,13 @@ export default function Navbar({ username }) {
     )
 }
 const NavbarStyled = styled.nav`
-    background: blue;
+    background: ${theme.colors.white};
     height: 10vh;
     display: flex;
     justify-content: space-between;
-    padding: 0px 20px;
+    padding: 10px 20px;
+
+    border-top-left-radius: ${theme.borderRadius.extraRound};
+    border-top-right-radius: ${theme.borderRadius.extraRound};
     /* align-items: center; */
 `;

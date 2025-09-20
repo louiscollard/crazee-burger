@@ -11,9 +11,9 @@ export default function NavbarRightSide({ username }) {
 }
 
 const NavbarRightSideStyled = styled.div`
-    background: purple;
     display: flex;
     align-items: center;
+    padding-right: 50px;
 
     /* .admin-button {
         background: lightblue;
