@@ -1,22 +1,25 @@
-import { BsPersonCircle } from "react-icons/bs";
-import { Link } from "react-router";
 import styled from "styled-components";
+import Profile from "./Profile";
 
-export default function NavbarRightSide({ TextInputValue }) {
+export default function NavbarRightSide({ username }) {
     return (
-        <div className="right-side">
-            Right
-            <BsPersonCircle />
-            <h3>{TextInputValue ? `Bonjour ${TextInputValue} !` : "Bonjour invité !"}</h3>
-            <Link to={"/"} >
-                <button>
-                    Se déconnecter
-                </button>
-            </Link >
-        </div>
+        <NavbarRightSideStyled>
+            {/* <div className="admin-button">Admin Button</div> */}
+            <Profile username={username} />
+        </NavbarRightSideStyled>
     )
 }
 
-const NavbarRightStyled = styled.div`
+const NavbarRightSideStyled = styled.div`
     background: purple;
+    display: flex;
+    align-items: center;
+
+    /* .admin-button {
+        background: lightblue;
+    } */
+
+    .profile {
+        background: yellow;
+    }
 `;

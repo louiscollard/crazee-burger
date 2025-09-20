@@ -5,12 +5,12 @@ import Navbar from "./NavBar";
 
 export default function OrderPage() {
     const location = useLocation()
-    const { TextInputValue } = location.state || {}
+    const { username } = location.state || {}
 
     return (
         <OrderPageStyled>
             <div className="container">
-                <Navbar TextInputValue={TextInputValue} />
+                <Navbar username={username} />
                 <Main />
             </div>
         </OrderPageStyled>

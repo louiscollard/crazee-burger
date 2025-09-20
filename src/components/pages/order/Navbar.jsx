@@ -2,11 +2,11 @@ import styled from "styled-components";
 import NavbarLeftSide from "./NavbarLeftSide";
 import NavbarRightSide from "./NavbarRightSide";
 
-export default function Navbar({ TextInputValue }) {
+export default function Navbar({ username }) {
     return (
         <NavbarStyled>
             <NavbarLeftSide />
-            <NavbarRightSide TextInputValue={TextInputValue} />
+            <NavbarRightSide username={username} />
         </NavbarStyled>
     )
 }
