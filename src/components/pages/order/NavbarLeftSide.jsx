@@ -3,13 +3,12 @@ import Logo from "../../shared/Logo";
 
 export default function NavbarLeftSide() {
     return (
-        <div className="left-side">
-            Left
+        <NavbarLeftSideStyled>
             <Logo />
-        </div>
+        </NavbarLeftSideStyled>
     )
 }
 
 const NavbarLeftSideStyled = styled.div`
-    background: violet;
+
 `;
