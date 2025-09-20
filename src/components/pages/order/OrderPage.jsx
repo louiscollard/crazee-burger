@@ -1,5 +1,6 @@
 import { useLocation } from "react-router";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import Main from "./Main";
 import Navbar from "./Navbar";
 
@@ -18,7 +19,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-    background: orange;
+    background: ${theme.colors.primary};
     height: 100vh;
     display: flex;
     justify-content: center;
