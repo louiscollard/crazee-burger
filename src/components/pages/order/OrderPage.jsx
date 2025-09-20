@@ -8,7 +8,12 @@ export default function OrderPage() {
     return (
         <OrderPageStyled>
             <div className="container">
-                <Navbar TextInputValue={TextInputValue} />
+                <div className="navbar">
+                    <Navbar TextInputValue={TextInputValue} />
+                </div>
+                <div className="main">
+                    Main
+                </div>
             </div>
         </OrderPageStyled>
     )
@@ -25,5 +30,18 @@ const OrderPageStyled = styled.div`
         background: red;
         height: 95vh;
         width: 1400px;
+        display: flex;
+        flex-direction: column;
+
+        .navbar {
+            background: blue;
+            height: 10vh;
+        }
+
+        .main {
+            background: green;
+            flex: 1;
+        }
+
     }
 `;
