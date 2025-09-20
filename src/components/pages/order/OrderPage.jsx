@@ -1,7 +1,8 @@
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import Navbar from "../../shared/NavBar";
 import Main from "./Main";
+import Navbar from "./NavBar";
+
 export default function OrderPage() {
     const location = useLocation()
     const { TextInputValue } = location.state || {}
