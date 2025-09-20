@@ -1,16 +1,34 @@
-import { Link, useLocation } from "react-router"
+import { useLocation } from "react-router";
+import styled from "styled-components";
+import { theme } from "../../../theme";
+import Main from "./Main";
+import Navbar from "./Navbar";
+
 export default function OrderPage() {
     const location = useLocation()
-    const { TextInputValue } = location.state || {}
+    const { username } = location.state || {}
 
     return (
-        <>
-            <h3>{TextInputValue ? `Bonjour ${TextInputValue} !` : "Bonjour invité !"}</h3>
-            <Link to={"/"} >
-                <button>
-                    Déconnexion
-                </button>
-            </Link >
-        </>
+        <OrderPageStyled>
+            <div className="container">
+                <Navbar username={username} />
+                <Main />
+            </div>
+        </OrderPageStyled>
     )
 }
+
+const OrderPageStyled = styled.div`
+    background: ${theme.colors.primary};
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        height: 95vh;
+        width: 1400px;
+        display: flex;
+        flex-direction: column;
+    }
+`;
