@@ -1,8 +1,8 @@
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import Main from "./Main";
-import Navbar from "./Navbar";
+import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
 
 export default function OrderPage() {
     const location = useLocation()
