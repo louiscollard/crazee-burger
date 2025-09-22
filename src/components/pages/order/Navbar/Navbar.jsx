@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { refreshPage } from "../../../utils/window";
-import Logo from "../../shared/Logo";
+import { theme } from "../../../../theme";
+import { refreshPage } from "../../../../utils/window";
+import Logo from "../../../shared/Logo";
 import NavbarRightSide from "./NavbarRightSide";
 
 export default function Navbar({ username }) {
@@ -21,5 +21,6 @@ const NavbarStyled = styled.nav`
 
     border-top-left-radius: ${theme.borderRadius.extraRound};
     border-top-right-radius: ${theme.borderRadius.extraRound};
+    border-bottom: 1px solid ${theme.colors.greyLight};
     /* align-items: center; */
 `;
