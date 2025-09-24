@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import OrderContext from "../../../../context/OrderContext";
 import { theme } from '../../../../theme';
-import Admin from './Admin';
+import Admin from './Admin/Admin';
 import Menu from './Menu';
 
 export default function Main() {
