@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { theme } from '../../theme/index';
 
-export default function Tab({ Icon }) {
+export default function Tab({ Icon, onClick, className }) {
     return (
-        <TabStyled>
-            <div className="icon">{Icon}</div>
-        </TabStyled>
+        <TabStyled onClick={onClick} className={className}>
+            <div className="icon" > {Icon}</div >
+        </TabStyled >
     )
 }
 
@@ -44,5 +44,10 @@ const TabStyled = styled.button`
 
     .icon {
         display: flex;
+    }
+
+    &.is-active {
+        background: black;
+        color: white;
     }
 `;
