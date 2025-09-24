@@ -1,37 +1,52 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
+import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../shared/Tab";
 
-export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
-    const [isActive, setIsActive] = useState(false)
-    const handleClick = () => {
-        setIsCollapsed(!isCollapsed)
-        setIsActive(!isActive)
+export default function AdminTabs() {
+    const { isCollapsed,
+        setIsCollapsed,
+        isAddSelected,
+        setIsAddSelected,
+        isEditSelected,
+        setIsEditSelected
+    } = useContext(OrderContext)
+
+    const selectAddTab = () => {
+        setIsCollapsed(false);
+        setIsAddSelected(true)
+        setIsEditSelected(false)
+    }
+
+    const selectEditTab = () => {
+        setIsCollapsed(false);
+        setIsAddSelected(false)
+        setIsEditSelected(true)
     }
 
     return (
         <AdminTabsStyled>
             <Tab
                 label={""}
-                Icon={isActive ? <FiChevronDown /> : <FiChevronUp />}
-                onClick={handleClick}
-                className={isActive ? "" : "is-active"}
+                Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                className={isCollapsed ? "is-active" : ""}
             />
             <Tab
                 label={"Ajouter un produit"}
                 Icon={<AiOutlinePlus />}
-                onClick={handleClick}
-                className={isActive ? "" : "is-active"}
+                onClick={selectAddTab}
+                className={isAddSelected ? "is-active" : ""}
             />
             <Tab
                 label={"Modifier un produit"}
                 Icon={<MdModeEditOutline />}
-                onClick={handleClick}
-                className={isActive ? "" : "is-active"}
+                onClick={selectEditTab}
+                className={isEditSelected ? "is-active" : ""}
             />
         </AdminTabsStyled>
     )
