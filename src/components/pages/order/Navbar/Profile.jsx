@@ -1,9 +1,11 @@
 import { BsPersonCircle } from "react-icons/bs";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 
-export default function Profile({ username }) {
+export default function Profile() {
+    const { username } = useParams();
+
     return (
         <ProfileStyled>
             <div className="info">
@@ -28,6 +30,7 @@ const ProfileStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     min-width: 100px;
+    padding-left: 50px;
 
     .info {
         text-align: right;

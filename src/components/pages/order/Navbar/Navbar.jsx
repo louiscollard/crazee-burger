@@ -4,11 +4,11 @@ import { refreshPage } from "../../../../utils/window";
 import Logo from "../../../shared/Logo";
 import NavbarRightSide from "./NavbarRightSide";
 
-export default function Navbar({ username }) {
+export default function Navbar() {
     return (
         <NavbarStyled>
             <Logo className="logo-order-page" onClick={refreshPage} />
-            <NavbarRightSide username={username} />
+            <NavbarRightSide />
         </NavbarStyled>
     )
 }
@@ -17,7 +17,7 @@ const NavbarStyled = styled.nav`
     height: 10vh;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 0px 20px;
 
     border-top-left-radius: ${theme.borderRadius.extraRound};
     border-top-right-radius: ${theme.borderRadius.extraRound};

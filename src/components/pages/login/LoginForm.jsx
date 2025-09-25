@@ -17,8 +17,8 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate("/order", { state: { username: TextInputValue } })
     setTextInputValue("")
+    navigate(`order/${TextInputValue}`)
   }
 
   return (
