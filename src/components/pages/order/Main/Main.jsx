@@ -6,7 +6,7 @@ import Admin from './Admin/Admin';
 import Menu from './Menu';
 
 export default function Main() {
-  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext)
 
   return (
     <MainStyled className="main">
@@ -26,7 +26,7 @@ const MainStyled = styled.div`
 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
 
   display: grid;
   grid-template-columns: 1fr;
