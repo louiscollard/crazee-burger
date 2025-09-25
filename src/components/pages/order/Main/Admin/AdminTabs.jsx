@@ -4,7 +4,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../shared/Tab";
-import { getTabsConfig } from "./getTabsConfigs";
+import { tabsConfig } from "./getTabsConfigs";
 
 export default function AdminTabs() {
     const {
@@ -19,7 +19,7 @@ export default function AdminTabs() {
         setCurrentTabSelected(tabSelected)
     }
 
-    const tabs = getTabsConfig(currentTabSelected)
+    const tabs = tabsConfig;
 
     return (
         <AdminTabsStyled>
