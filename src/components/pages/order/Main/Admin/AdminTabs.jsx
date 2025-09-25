@@ -5,8 +5,6 @@ import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../shared/Tab";
 import { getTabsConfig } from "./getTabsConfigs";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 
 export default function AdminTabs() {
     const {
