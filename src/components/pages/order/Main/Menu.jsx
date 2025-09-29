@@ -5,6 +5,8 @@ import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/math";
 import Card from "../../../shared/Card";
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+
 export default function Menu() {
     const { menu } = useContext(OrderContext)
 
@@ -15,7 +17,7 @@ export default function Menu() {
                     <Card
                         key={id}
                         title={title}
-                        imageSource={imageSource}
+                        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
                         leftDescription={formatPrice(price)}
                     />
                 )
