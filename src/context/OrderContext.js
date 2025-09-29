@@ -14,5 +14,9 @@ export default createContext({
     setIsEditSelected: () => {},
 
     currentTabSelected: false,
-    setCurrentTabSelected: () => {}
+    setCurrentTabSelected: () => {},
+
+    menu: [],
+    setMenu: () => {},
+    handleAddProduct: () => {}
 })
