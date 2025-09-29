@@ -1,28 +1,42 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 
+const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0
+}
+
 export default function AddForm() {
     const { handleAddProduct } = useContext(OrderContext)
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-    const newProduct = {
-        id: new Date().getTime(),
-        title: "new",
-        imageSource: "",
-        leftDescription: ""
+    const handleChange = (event) => {
+        const newValue = event.target.value;
+        const name = event.target.name
+        setNewProduct({ ...newProduct, [name]: newValue })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleAddProduct(newProduct)
+
+        const newProductToAdd = {
+            ...newProduct,
+            id: new Date().getTime()
+        }
+
+        handleAddProduct(newProductToAdd)
     }
+
     return (
         <AddFormStyled onSubmit={handleSubmit}>
             <div className="image-preview">ImagePreview</div>
             <div className="input-fields">
-                <input type="text" placeholder="Nom" />
-                <input type="text" placeholder="Image URL" />
-                <input type="text" placeholder="Prix" />
+                <input name="title" type="text" placeholder="Nom" onChange={handleChange} />
+                <input name="imageSource" type="text" placeholder="Image URL" onChange={handleChange} />
+                <input name="price" type="text" placeholder="Prix" onChange={handleChange} />
             </div>
             <button className="submit-button">Submit button</button>
         </AddFormStyled>
