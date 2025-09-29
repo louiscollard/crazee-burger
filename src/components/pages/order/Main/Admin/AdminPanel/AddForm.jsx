@@ -14,9 +14,8 @@ export default function AddForm() {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
     const handleChange = (event) => {
-        const newValue = event.target.value;
-        const name = event.target.name
-        setNewProduct({ ...newProduct, [name]: newValue })
+        const { name, value } = event.target
+        setNewProduct({ ...newProduct, [name]: value })
     }
 
     const handleSubmit = (event) => {
@@ -24,7 +23,7 @@ export default function AddForm() {
 
         const newProductToAdd = {
             ...newProduct,
-            id: new Date().getTime()
+            id: crypto.randomUUID()
         }
 
         handleAddProduct(newProductToAdd)
