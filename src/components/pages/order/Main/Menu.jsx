@@ -8,7 +8,16 @@ import Card from "../../../shared/Card";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-    const { menu } = useContext(OrderContext)
+    const { menu, resetMenu, isModeAdmin, handleDeleteProduct } = useContext(OrderContext)
+
+    if (menu.length === 0) {
+        return (
+            <div>
+                <span>Pas de produits</span>
+                <button onClick={resetMenu}>Générer de nouveaux produits</button>
+            </div>
+        )
+    }
 
     return (
         <MenuStyled className="menu">
@@ -19,6 +28,8 @@ export default function Menu() {
                         title={title}
                         imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
                         leftDescription={formatPrice(price)}
+                        hasDeleteButton={isModeAdmin}
+                        onDelete={() => handleDeleteProduct(id)}
                     />
                 )
             })}
