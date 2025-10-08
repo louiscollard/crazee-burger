@@ -27,7 +27,7 @@ export default function OrderPage() {
     }
 
     const resetMenu = () => {
-        setMenu(fakeMenu.MEDIUM)
+        setMenu(fakeMenu.SMALL)
     }
 
     const OrderContextValue = {

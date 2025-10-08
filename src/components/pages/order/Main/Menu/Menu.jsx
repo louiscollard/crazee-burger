@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
-import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/math";
-import Card from "../../../shared/Card";
+import OrderContext from "../../../../../context/OrderContext";
+import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/math";
+import Card from "../../../../shared/Card";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -11,12 +13,8 @@ export default function Menu() {
     const { menu, resetMenu, isModeAdmin, handleDeleteProduct } = useContext(OrderContext)
 
     if (menu.length === 0) {
-        return (
-            <div>
-                <span>Pas de produits</span>
-                <button onClick={resetMenu}>Générer de nouveaux produits</button>
-            </div>
-        )
+        if (!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onClick={resetMenu} />
     }
 
     return (
