@@ -1,25 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
-    return (
-        <TextInputStyled>
-            {Icon && Icon}
-            <input type="text" value={value} onChange={onChange} {...extraProps} />
-        </TextInputStyled>
-    )
+export default function TextInput({ value, onChange, Icon, version = "normal", ...extraProps }) {
+  return (
+    <TextInputStyled version={version}>
+      <div className="icon">{Icon && Icon}</div>
+      <input type="text" value={value} onChange={onChange} {...extraProps} />
+    </TextInputStyled>
+  )
 }
 
 const TextInputStyled = styled.div`
-    background: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
 
     .icon {
-        margin-right: 8px;
+        margin: 0 13px 0 8px;
         color: ${theme.colors.greySemiDark};
         font-size: ${theme.fonts.size.P0};
     }
@@ -35,4 +32,45 @@ const TextInputStyled = styled.div`
         background: ${theme.colors.white};
         color: ${theme.colors.greyLight};
     }
+
+    /* ${(props) => {
+    if (props.version === "normal") return extraStyleNormal
+    if (props.version === "minimalist") return extraStyleMinimalist
+  }} */
+
+    ${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleNormal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
+  }
+`
+
+const extraStyleMinimalist = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white}; ////+
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; //// add outline
+    }
+  }
+`
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+}

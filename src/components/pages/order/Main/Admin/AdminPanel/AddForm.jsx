@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
+import { theme } from "../../../../../../theme";
+import TextInput from "../../../../../shared/TextInput";
+import { getInputTextsConfig } from "./InputTextConfig";
 
 const EMPTY_PRODUCT = {
     id: "",
@@ -40,6 +43,8 @@ export default function AddForm() {
         }, 2000)
     }
 
+    const inputTexts = getInputTextsConfig(newProduct);
+
     return (
         <AddFormStyled onSubmit={handleSubmit}>
             <div className="image-preview">
@@ -49,11 +54,10 @@ export default function AddForm() {
                     <div>Aucune image</div>
                 )}
             </div>
-            {/* <div className="image-preview">ImagePreview</div> */}
             <div className="input-fields">
-                <input name="title" value={newProduct.title} type="text" placeholder="Nom" onChange={handleChange} />
-                <input name="imageSource" value={newProduct.imageSource} type="text" placeholder="Image URL" onChange={handleChange} />
-                <input name="price" value={newProduct.price} type="number" placeholder="Prix" onChange={handleChange} />
+                {inputTexts.map((input) => {
+                    return <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" />
+                })}
             </div>
             <div className="submit">
                 <button className="submit-button">Submit button</button>
@@ -69,15 +73,18 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-    border: 2px solid black;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
     height: 100%;
     width: 70%;
+    grid-column-gap: 20px;
+    grid-row-gap: 8px;
 
     .image-preview {
-        background: red;
+        border: solid 1px ${theme.colors.greyMedium};
+        border-radius: ${theme.borderRadius.round};
+        color: ${theme.colors.greyMedium};
         grid-area: 1 / 1 / 4 / 2;
         display: flex;
         justify-content: center;
@@ -92,23 +99,21 @@ const AddFormStyled = styled.form`
     }
 
     .input-fields {
-        background: blue;
         grid-area: 1 / 2 / -2 / -1;
 
         display: grid;
+        grid-row-gap: 8px;
     }
 
     .submit {
-        background: green;
-        grid-area: 4 / 2 / -2 / -2;
+        grid-area: 4 / -2 / -1 / -1;
         display: flex;
         align-items: center;
-        
-        .submit-button {
-            width: 50%;
-        }
-        .submit-message {
-            height: 100%;
-        }
+        position: relative;
+        top: 3px;
+
+    .submit-button {
+        height: 100%;
     }
+}
 `;
