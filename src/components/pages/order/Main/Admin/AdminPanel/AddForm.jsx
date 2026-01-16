@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { FiCheck } from "react-icons/fi";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
+import Button from "../../../../../shared/Button";
 import TextInput from "../../../../../shared/TextInput";
 import { getInputTextsConfig } from "./InputTextConfig";
+import SubmitMessage from "./SubmitMessage";
 
 const EMPTY_PRODUCT = {
     id: "",
@@ -60,13 +61,8 @@ export default function AddForm() {
                 })}
             </div>
             <div className="submit">
-                <button className="submit-button">Submit button</button>
-                {isSubmitted && (
-                    <div className="submit-mesage">
-                        <FiCheck />
-                        <span>Ajouté avec succès!</span>
-                    </div>
-                )}
+                <Button className={"submit-button"} label={"Ajouter un nouveau produit au menu"} version="success" />
+                {isSubmitted && <SubmitMessage />}
             </div>
         </AddFormStyled>
     )
