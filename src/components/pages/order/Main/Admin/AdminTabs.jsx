@@ -4,7 +4,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../shared/Tab";
-import { tabsConfig } from "./getTabsConfigs";
+import { tabsConfig } from "./tabsConfigs";
 
 export default function AdminTabs() {
     const {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
@@ -11,6 +12,23 @@ export default function OrderPage() {
     const [isAddSelected, setIsAddSelected] = useState(true);
     const [isEditSelected, setIsEditSelected] = useState(false);
     const [currentTabSelected, setCurrentTabSelected] = useState("add");
+    const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+
+    const handleAddProduct = (newProduct) => {
+        const menuCopy = [...menu];
+        const menuUpdated = [newProduct, ...menuCopy]
+        setMenu(menuUpdated)
+    }
+
+    const handleDeleteProduct = (id) => {
+        const menuCopy = [...menu];
+        const menuUpdated = menuCopy.filter((product) => product.id !== id);
+        setMenu(menuUpdated)
+    }
+
+    const resetMenu = () => {
+        setMenu(fakeMenu.MEDIUM)
+    }
 
     const OrderContextValue = {
         isModeAdmin,
@@ -22,7 +40,11 @@ export default function OrderPage() {
         isEditSelected,
         setIsEditSelected,
         currentTabSelected,
-        setCurrentTabSelected
+        setCurrentTabSelected,
+        menu,
+        handleAddProduct,
+        handleDeleteProduct,
+        resetMenu
     }
 
     return (

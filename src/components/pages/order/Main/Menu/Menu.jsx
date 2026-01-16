@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/math";
-import Card from "../../../shared/Card";
+import OrderContext from "../../../../../context/OrderContext";
+import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/math";
+import Card from "../../../../shared/Card";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
+
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-    const [menu, setMenu] = useState(fakeMenu2)
+    const { menu, resetMenu, isModeAdmin, handleDeleteProduct } = useContext(OrderContext)
+
+    if (menu.length === 0) {
+        if (!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onReset={resetMenu} />
+    }
 
     return (
         <MenuStyled className="menu">
@@ -15,8 +24,10 @@ export default function Menu() {
                     <Card
                         key={id}
                         title={title}
-                        imageSource={imageSource}
+                        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
                         leftDescription={formatPrice(price)}
+                        hasDeleteButton={isModeAdmin}
+                        onDelete={() => handleDeleteProduct(id)}
                     />
                 )
             })}
