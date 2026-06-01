@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { theme } from "../../../../../theme"
 
 export default function EmptyMenuClient() {
-    return (
-        <EmptyMenuStyled>
-            <span className="title">Victime de notre succès ! :D</span>
-            <span className="description">De nouvelles recettes sont en cours de préparation.</span>
-            <span className="description">À très vite !</span>
-        </EmptyMenuStyled>
-    )
+  return (
+    <EmptyMenuStyled>
+      <span className="title">Victime de notre succès ! :D</span>
+      <span className="description">De nouvelles recettes sont en cours de préparation.</span>
+      <span className="description">À très vite !</span>
+    </EmptyMenuStyled>
+  )
 }
 
 const EmptyMenuStyled = styled.div`
@@ -23,7 +23,7 @@ const EmptyMenuStyled = styled.div`
   .title,
   .description {
     text-align: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.greyBlue};
   }
 

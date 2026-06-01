@@ -3,13 +3,13 @@ import { theme } from "../../../../../theme"
 import Button from "../../../../shared/Button"
 
 export default function EmptyMenuAdmin({ onReset }) {
-    return (
-        <EmptyMenuStyled>
-            <span className="title">Le menu est vide ?</span>
-            <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
-            <Button label={"Générer de nouveaux produits"} onClick={onReset} version="normal" />
-        </EmptyMenuStyled>
-    )
+  return (
+    <EmptyMenuStyled>
+      <span className="title">Le menu est vide ?</span>
+      <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} version="normal" />
+    </EmptyMenuStyled>
+  )
 }
 
 const EmptyMenuStyled = styled.div`
@@ -24,7 +24,7 @@ const EmptyMenuStyled = styled.div`
   .title,
   .description {
     text-align: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.greyBlue};
   }
 
