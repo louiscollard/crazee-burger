@@ -4,6 +4,7 @@ import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import Button from "../../../../../shared/Button";
 import TextInput from "../../../../../shared/TextInput";
+import ImagePreview from "./Form/ImagePreview";
 import { getInputTextsConfig } from "./InputTextConfig";
 import SubmitMessage from "./SubmitMessage";
 
@@ -48,13 +49,7 @@ export default function AddForm() {
 
     return (
         <AddFormStyled onSubmit={handleSubmit}>
-            <div className="image-preview">
-                {newProduct.imageSource ? (
-                    <img src={newProduct.imageSource} alt={newProduct.title} />
-                ) : (
-                    <div>Aucune image</div>
-                )}
-            </div>
+            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => {
                     return <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" />
