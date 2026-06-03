@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 import Button from './Button';
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, isModeAdmin }) {
   return (
-    <CardStyled className="produit">
+    <CardStyled className={isModeAdmin && 'admin-card'}>
       {hasDeleteButton &&
         <button className='delete-button' aria-label='delete-button' onClick={onDelete}>
           <TiDelete className='icon' />
@@ -38,6 +38,12 @@ const CardStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+
+  &.admin-card:hover{
+      box-shadow: 0px 0.5px 30px rgb(253, 165, 0); /* Orange transparent */
+      transform: scale(1.05);
+      transition: all 0.3s ease-in-out;
+  }
 
   .delete-button {
     position: absolute;
@@ -88,7 +94,7 @@ const CardStyled = styled.div`
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
-      font-family: "Amatic SC", cursive;
+      font-family: ${theme.fonts.family.stylish}
     }
 
     .description {

@@ -1,18 +1,13 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { theme } from "../../../../../../theme";
 import Button from "../../../../../shared/Button";
 import TextInput from "../../../../../shared/TextInput";
+import ImagePreview from "./Form/ImagePreview";
 import { getInputTextsConfig } from "./InputTextConfig";
 import SubmitMessage from "./SubmitMessage";
-
-const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0
-}
 
 export default function AddForm() {
     const { handleAddProduct } = useContext(OrderContext)
@@ -48,13 +43,7 @@ export default function AddForm() {
 
     return (
         <AddFormStyled onSubmit={handleSubmit}>
-            <div className="image-preview">
-                {newProduct.imageSource ? (
-                    <img src={newProduct.imageSource} alt={newProduct.title} />
-                ) : (
-                    <div>Aucune image</div>
-                )}
-            </div>
+            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => {
                     return <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" />
